@@ -1,79 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome — To Ayra modest wear</title>
+  <meta charset="UTF-8">
+  <title>Ayra Modest Wear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    :root{ --bg1:#f6d365; --bg2:#fda085; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff0f5;
     }
-    .card{
-      background: rgba(255,255,255,0.92);
-      padding: 2rem 2.5rem;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    nav {
+      background: #d63384;
+      padding: 15px;
       text-align: center;
-      max-width: 90vw;
     }
-    h1{
-      margin:0;
-      font-size: clamp(2rem, 6vw, 4rem);
-      color:#222;
-      line-height:1;
-    }
-    p{ margin-top:0.5rem; color:#555; }
-    button{
-      margin-top:1rem;
-      padding:0.55rem 1rem;
-      border-radius:8px;
-      border:0;
-      cursor:pointer;
-      font-weight:600;
-    }
-    .contact{
-      margin-top: 1.5rem;
-      font-size: 1rem;
-      color: #333;
-    }
-    .contact a{
-      color: #d35400;
+
+    nav a {
+      color: white;
+      margin: 0 15px;
       text-decoration: none;
-      margin: 0 0.3rem;
+      font-weight: bold;
     }
-    .contact a:hover{
-      text-decoration: underline;
+
+    header {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      background: #d63384;
+    }
+
+    .products, .order-form {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card {
+      display: inline-block;
+      background: white;
+      width: 220px;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      color: #d63384;
+    }
+
+    .btn {
+      background: #25D366;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .order-form input, .order-form select {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    footer {
+      background: #fce4ec;
+      text-align: center;
+      padding: 20px;
     }
   </style>
-</head>
-<body>
-  <main class="card" role="main">
-    <h1 id="greeting">Welcome — To Ayra modest wear</h1>
-    <button id="toggle">Make it friendly</button>
-
-    <div class="contact">
-      <p>📞 <strong>Phone:</strong> <a href="tel:+916369285752">+91 6369285752</a></p>
-      <p>📧 <strong>Email:</strong> <a href="mailto:aslamee636928@gmail.com">aslamee636928@gmail.com</a></p>
-      <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/aslamee" target="_blank">@aslamee</a></p>
-    </div>
-  </main>
 
   <script>
-    const greeting = document.getElementById('greeting');
-    const btn = document.getElementById('toggle');
-    let friendly = false;
-    btn.addEventListener('click', () => {
-      friendly = !friendly;
-      greeting.textContent = friendly ? 'Hi Aslamee!' : 'Hi Aslamee?';
-      btn.textContent = friendly ? 'Make it curious' : 'Make it friendly';
-    });
+    function sendOrder() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let product = document.getElementById("product").value;
+
+      let message =
+        "Order Request:%0A" +
+        "Name: " + name + "%0A" +
+        "Phone: " + phone + "%0A" +
+        "Product: " + product;
+
+      window.open("https://wa.me/916369285752?text=" + message, "_blank");
+    }
   </script>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<header>
+  <h1>Ayra Modest Wear</h1>
+  <p>Elegant • Modest • Affordable Hijabs</p>
+</header>
+
+<section class="products">
+  <h2>Our Products</h2>
+
+  <div class="card">
+    <img src="images/black-hijab.jpg">
+    <h3>Black Hijab</h3>
+    <p>₹900 – ₹1200</p>
+    <a class="btn" href="#order">Order Now</a>
+  </div>
+
+  <div class="card">
+    <img src="images/grey-hijab.jpg">
+    <h3>Grey Hijab</h3>
+    <p>₹1200 – ₹1500</p>
+    <a class="btn" href="#order">Order Now</a>
+  </div>
+</section>
+
+<section class="order-form" id="order">
+  <h2>Place Your Order</h2>
+
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="tel" id="phone" placeholder="Phone Number" required>
+
+  <select id="product">
+    <option>Black Hijab</option>
+    <option>Grey Hijab</option>
+    <option>Peach Hijab</option>
+    <option>Hajj Material</option>
+    <option>Maternity Kit</option>
+  </select>
+
+  <br>
+  <button class="btn" onclick="sendOrder()">Send Order on WhatsApp</button>
+</section>
+
+<footer>
+  <p>Email: <a href="mailto:info@ayra-modest-wear.com">info@ayra-modest-wear.com</a></p>
+  <p>Instagram: @ayra.modest_wear_.official</p>
+</footer>
+
 </body>
 </html>
