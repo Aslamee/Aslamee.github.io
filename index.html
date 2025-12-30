@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI CCTV Monitoring</title>
+</head>
+<body>
+  <h1>🚨 AI CCTV Monitoring Dashboard</h1>
+  <div id="alerts"></div>
+
+  <script>
+    async function loadAlerts() {
+      const res = await fetch("https://your-backend.onrender.com/events");
+      const data = await res.json();
+      document.getElementById("alerts").innerHTML =
+        JSON.stringify(data);
+    }
+    setInterval(loadAlerts, 5000);
+  </script>
+</body>
+</html>
